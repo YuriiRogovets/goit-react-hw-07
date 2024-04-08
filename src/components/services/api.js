@@ -16,5 +16,5 @@ export const addItem = async (contact) => {
 export const deleteItem = async (id) => {
   const url = `/contacts/${id}`;
   const response = await axios.delete(url);
-  return response.data.id;
+  return response;
 };
