@@ -28,7 +28,7 @@ const ContactList = () => {
       {error && <Error />}
       {loading && <Loader />}
       <ul className={css.contactListWrap}>
-        {filterContacts > 0 &&
+        {filterContacts.length > 0 &&
           filterContacts.map((item) => {
             return (
               <li key={item.id}>
