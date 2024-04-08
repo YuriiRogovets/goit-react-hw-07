@@ -49,21 +49,6 @@ export const contactsSlice = createSlice({
         state.loading = false;
         state.error = payload;
       }),
-
-  // Об'єкт редюсерів
-
-  // reducers: {
-  //   addContact(state, action) {
-  //     state.items = [...state.items, action.payload];
-  //   },
-  //   deleteContact(state, action) {
-  //     state.items = state.items.filter((item) => item.id !== action.payload);
-  //   },
-  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;
-
-// Експортуємо генератори екшенів та редюсер
-// export const { deleteContact, addContact } = contactsSlice.actions;
-// export const contactsReducer = contactsSlice.reducer;
