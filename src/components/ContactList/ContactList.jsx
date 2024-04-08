@@ -1,12 +1,20 @@
 import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
-import { selectNameFilter } from "../../redux/filtersSlice";
-import { selectContacts } from "../../redux/contactsSlice";
+import {
+  selectContacts,
+  selectError,
+  selectLoading,
+  selectNameFilter,
+} from "../../redux/selectors";
+import Error from "../Error/Error";
+import Loader from "../Loader/Loader";
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filterValue = useSelector(selectNameFilter);
+  const error = useSelector(selectError);
+  const loading = useSelector(selectLoading);
 
   const filterContacts =
     filterValue.trim() !== ""
@@ -16,15 +24,20 @@ const ContactList = () => {
       : contacts;
 
   return (
-    <ul className={css.contactListWrap}>
-      {filterContacts.map((item) => {
-        return (
-          <li key={item.id}>
-            <Contact name={item.name} number={item.number} id={item.id} />
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      {error && <Error />}
+      {loading && <Loader />}
+      <ul className={css.contactListWrap}>
+        {filterContacts > 0 &&
+          filterContacts.map((item) => {
+            return (
+              <li key={item.id}>
+                <Contact name={item.name} number={item.number} id={item.id} />
+              </li>
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 

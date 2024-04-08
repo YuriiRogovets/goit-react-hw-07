@@ -16,7 +16,7 @@ export const filtersSlice = createSlice({
   },
 });
 
-export const selectNameFilter = (state) => state.filters.name;
+// export const selectNameFilter = (state) => state.filters.name;
 
 // Експортуємо генератори екшенів та редюсер
 export const { changeFilter } = filtersSlice.actions;
